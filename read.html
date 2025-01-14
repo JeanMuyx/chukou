@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<title>读书</title>
+		<link rel="stylesheet" type="text/css" href="css/book.css">
+		<script type="text/javascript" src="js/jquery.min.js"></script>
+		<script type="text/javascript" src="js/book.js"></script>
+		<style>
+			a {
+				text-decoration: none;
+				letter-spacing: 2px;
+			}
+			p{
+				line-height: 1.5;
+			}
+
+			/*下拉菜单CSS设置*/
+			.btn-list-group1 {
+				position: relative;
+				width: 15%;
+				margin-top: 10px;
+				margin-left: 10px;
+				text-align: right;
+				cursor: pointer;
+			}
+
+			.btn-list-area1 {
+				display: none;
+				position:absolute;
+				left:-23px;
+				background:rgb(149, 177, 151,0.5) ;
+				border-radius: 5px;
+				width: 150px;
+				right: 300px;
+			}
+
+			.btn-list-group1:hover .btn-list-area1 {
+				display: block
+			}
+
+			.menuBtn1 {
+				display: inline-block;
+				padding-right: 23px;
+				font-size: 25px;
+				color: rgba(255, 255, 255);
+				text-align: center;
+				line-height: 1.5;
+				cursor: pointer;
+			}
+
+			.subMenu1 {
+				width: 100px;
+			}
+
+			/*背景CSS设置*/
+			.background-img {
+				margin: 0px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				width: 1456px;
+				height: 880px;
+				background-image: url("img/背景图/10.jpg");
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+
+			.header {
+				background-color: rgb(149, 177, 151,0.5);
+				height: 100px;
+				width: 1456px;
+				margin-left: 0px;
+			}
+			.title-img1{
+			    padding-left:20px;
+				padding-top:8px;
+				background-repeat: no-repeat;
+			}
+			
+			.title-text1 {
+				margin-top: -841px;
+				margin-left: 1012px;
+				font-size: 24px;
+				color: rgb(255, 255, 255);
+				font-family: "Microsoft YaHei", "微软雅黑", "宋体";
+				/*text-shadow: 2px 2px 2px grey;*/
+			}
+
+			/*书本css*/
+			a,
+			a:link,
+			a:visited,
+			a:hover,
+			a:active {
+				text-decoration: none;
+			}
+
+			::-moz-selection {
+				background: #338FFF;
+				color: #fff;
+			}
+
+			::-webkit-selection {
+				background: #338FFF;
+				color: #fff;
+			}
+
+			::selection {
+				background: #338FFF;
+				color: #fff;
+			}
+
+			.clear::after {
+				content: "";
+				display: block;
+				height: 0px;
+				clear: both;
+				visibility: hidden;
+			}
+
+			.response-img {
+				display: block;
+				max-width: 100%;
+			}
+
+			.text-overflow {
+				white-space: nowrap;
+				overflow: hidden;
+				text-overflow: ellipsis;
+			}
+
+			body {
+				width: 100%;
+				max-width: 1920px;
+				min-width: 1200px;
+			}
+
+			#knowledge {
+				width: 100%;
+				position: relative;
+				;
+				padding: 40px 0;
+			}
+
+			.bookBox {
+				width: 1000px;
+				height: 700px;
+				position: relative;
+				margin: 0px auto;
+				-webkit-perspective-origin: 50% 60%;
+				perspective-origin: 50% 60%;
+				-webkit-perspective: 1500px;
+				perspective: 1500px;
+				background: url(img/电子书/bookBg.png) no-repeat 0 0;
+				background-size: 100% 100%;
+			}
+
+			.bookBox:hover .lastBtn {
+				display: block;
+			}
+
+			.bookBox:hover .nextBtn {
+				display: block;
+			}
+
+			.bookPage {
+				position: absolute;
+				width: 500px;
+				height: 700px;
+				top: 0;
+				-webkit-transform-style: preserve-3d;
+				-moz-transform-style: preserve-3d;
+				-ms-transform-style: preserve-3d;
+				-o-transform-style: preserve-3d;
+				transform-style: preserve-3d;
+				-webkit-transition: all linear 2s;
+				-moz-transition: all linear 2s;
+				-ms-transition: all linear 2s;
+				-o-transition: all linear 2s;
+				transition: all linear 2s;
+				background: url(img/电子书/bookLeft.png) no-repeat;
+				background-size: 479.26px 483.33px;
+				background-position: 20.74px 8.3px;
+			}
+
+			.bookPage img {
+				position: absolute;
+				top: 70px;
+				left: 60px;
+				display: inline-block;
+				width: 400px;
+			}
+
+			.bookWord {
+				position: absolute;
+				top: 50px;
+				left: 60px;
+				display: inline-block;
+				width: 360px;
+				height: 590px;
+				padding: 20px;
+				font-size: 20px;
+				font-family: 'SimSun';
+				line-height: 35px;
+				backface-visibility: visible;
+				background-color: #f0f0f0;
+				word-break: break-all;
+				-webkit-column-count: 2;
+				-webkit-column-gap: 40px;
+				-moz-column-count: 2;
+				-moz-column-gap: 40px;
+				-ms-column-count: 2;
+				-ms-column-gap: 40px;
+				column-count: 2;
+				column-gap: 40px;
+			}
+
+			.bookWord span {
+				font-size: 30px;
+				font-weight: 600;
+				line-height: 40px;
+			}
+
+			.frist {
+				left: 0;
+				z-index: 1;
+			}
+
+			.frist img {
+				z-index: 1;
+			}
+
+			.last {
+				right: 0;
+				z-index: 1;
+			}
+
+			.last p {
+				z-index: 1;
+			}
+
+			.runPage {
+				right: 0;
+				-webkit-transform-origin: 0 0;
+				-moz-transform-origin: 0 0;
+				-ms-transform-origin: 0 0;
+				-o-transform-origin: 0 0;
+				transform-origin: 0 0;
+			}
+
+			.runPage,
+			.bookPage:last-child {
+				background: url(img/电子书/bookRight.png) no-repeat;
+				background-size: 479.26px 800px;
+				background-position: 0 8.3px;
+			}
+
+			.runClass {
+				-webkit-transform: rotateY(-180deg);
+				-moz-transform: rotateY(-180deg);
+				-ms-transform: rotateY(-180deg);
+				-o-transform: rotateY(-180deg);
+				transform: rotateY(-180deg);
+			}
+
+			.lastBtn,
+			.nextBtn {
+				display: block;
+				position: absolute;
+				top: 230px;
+				cursor: pointer;
+				z-index: 999;
+				width: 50px;
+				height: 150px;
+				font-size: 70px;
+				line-height: 150px;
+				color: #fff;
+				text-decoration: none;
+				background-color: rgba(0, 0, 0, .5);
+			}
+
+			.lastBtn {
+				left: -60px;
+			}
+
+			.nextBtn {
+				right: -60px;
+			}
+
+			.canvasBox {
+				display: block;
+				width: 158px;
+				height: 158px;
+			}
+
+			.pageNumber {
+				position: absolute;
+				bottom: 20px;
+				right: 0;
+				font-size: 20px !important;
+				line-height: 30px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="background-img">
+			<div class="header">
+				<div class="title-img1"><img src="img/出口.png" width="60px" height="80px" />
+					
+				</div>
+			</div>
+			<section id="knowledge" class="viewBlock">
+				<div class="bookBox">
+					<a class="lastBtn">
+						< <a class="nextBtn">>
+					</a>
+					<div class="bookPage frist">
+						<img src="img/电子书/dataImg1.png" />
+					</div>
+					<div class="bookPage runPage">
+						<div class="bookWord">
+							<span>《解忧杂货店》</span> 该书讲述了在僻静街道旁的一家杂货店，只要写下烦恼投进店前门卷帘门的投信口，
+							第二天就会在店后的牛奶箱里得到回答：因男友身患绝症，年轻女孩月兔在爱情与梦想间徘徊；松冈克郎为了
+							音乐梦想离家漂泊，却在现实中寸步难行；少年浩介面临家庭巨变，挣扎在亲情与未来的迷茫中……他们将困惑写成信投进杂货店，
+							奇妙的事情随即不断发生。通过与店主和其他顾客的交往，他们逐渐理解了人生的真谛，并学会了面对困境和烦恼的正确态度。
+							小说深刻地探讨了人生的困扰和对抗困境的勇气
+							<span class="pageNumber">1</span>
+						</div>
+						<img src="img/电子书/dataImg2.png" />
+					</div>
+					<div class="bookPage runPage">
+						<div class="bookWord">
+							<span>《偷影子的人》</span>故事讲述了一个老是受班上同学欺负的瘦弱小男孩，因为拥有一种特殊能力而强大：他能“偷别人的影子”，
+							因而能看见他人心事，听见人们心中不愿意说出口的秘密。他开始成为需要帮助者的心灵伙伴，为每个偷来的影子找到点亮生命的小小光芒。
+							这部作品展现了马克·李维温柔风趣的写作风格，有催人泪下的亲情、浪漫感人的爱情和不离不弃的友情，
+							清新浪漫的气息和温柔感人的故事相互交织，带给读者笑中带泪的阅读感受，是一部唤醒童年回忆和内心梦想的温情疗愈小说。
+							<span class="pageNumber">2</span>
+						</div>
+						<img src="img/电子书/dataImg3.png" />
+					</div>
+					<div class="bookPage runPage">
+						<div class="bookWord">
+							<span>《一个人的朝圣》</span> 《一个人的朝圣》讲述了一个退休老人为探望病危友人而独自踏上漫长旅程的故事，主人公哈罗德的出发点是为了给予友人希望
+							，最终却实现了自我救赎，激发了对自我价值的再肯定、对成长缺陷的新认知及对现实命运的接受和理解。同时，其妻子在等待及关注哈罗德的过程中，对痛苦的过往逐一进行审视，
+							触发了对爱的全新领悟和对自我的重新认识。 该小说提示人们在日复一日“一只脚放到另一只脚”的平凡生活中，要学会时时审视自我，重新发现生活的真谛。
+							<span class="pageNumber">3</span>
+						</div>
+						<img src="img/电子书/dataImg4.png" />
+					</div>
+					<div class="bookPage last">
+						<div class="bookWord">
+							<span>《追风筝的人》</span>全书围绕风筝与阿富汗的两个少年展开，讲述了一个富家少年与家中仆人，关于人性的背叛与救赎的故事。
+							小说属于成长类文学范畴的作品，描写了主人公阿米尔寻求灵魂救赎的成长历程，作者想要呼唤人们的良知，告诫人们“不善良的人终将会在痛苦的沼泽中不断挣扎”。
+							每个人都有可能经历着与主人公同样的人生际遇，犯下的错误以及做出的背叛等等其实都对受伤心灵要进行一种弥补，而这也正是《追风筝的人》所要表达的深刻内涵。
+							<span class="pageNumber">4</span>
+						</div>
+					</div>
+				</div>
+			</section>
+			<div style="text-align:center;">
+			</div>
+			<div class="title-text1"> <a style="color:inherit;" href="jiemian1.html">首页&nbsp&nbsp&nbsp</a>
+				<span class="btn-list-group1">
+					<a style="color:inherit;" href="jiemian2.html">心灵驿站</a>
+					<span class="btn-list-area1">
+						<a class="menuBtn1 subMenu1" href="sport.html">运动</a>
+						<a class="menuBtn1 subMenu1" href="music.html">音乐</a>
+						<a class="menuBtn1 subMenu1" href="read.html">读书</a>
+						<a class="menuBtn1 subMenu1" href="travel.html">旅行</a>
+					</span>
+				</span>
+				&nbsp&nbsp&nbsp
+				<a style="color:inherit;" href="shudong.html">星空树洞</a>&nbsp&nbsp&nbsp
+				<a style="color:inherit;" href="ending.html">结语</a>
+			</div>
+		</div>
+
+	</body>
+</html>

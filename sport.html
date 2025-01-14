@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>运动</title>
+		<link rel="stylesheet" href="https://at.alicdn.com/t/c/font_3881267_wfv3iyzbijg.css">
+		<style>
+			a {
+				text-decoration: none;
+				letter-spacing: 2px;
+			}
+			p{
+				line-height: 1.5;
+			}
+
+			/*音乐播放器*/
+			#music {
+				position: absolute;
+				left: 40%;
+				top: 45%;
+				background-color: blue;
+			}
+
+			.audio {
+				margin: 0.25rem 0;
+				height: 4rem;
+				border-radius: 25px;
+				background: rgb(187, 221, 213);
+				background: linear-gradient(90deg, rgba(255, 255, 255, 0.82) 0%, rgba(255, 255, 255, 1) 100%);
+				position: relative;
+			}
+
+			/*点击轮播图设置*/
+			.box {
+				width: 750px;
+				height: 600px;
+				margin-left: 0px;
+				margin-top: 50px;
+				overflow: hidden;
+				position: relative;
+			}
+
+			.box-1 ul {}
+
+			.box-1 ul li {
+				width: 750px;
+				height: 600px;
+				position: relative;
+			}
+
+			.box-1 ul li img {
+				display: block;
+				width: 750px;
+				height: 600px;
+			}
+
+			.box-1 ul li h2 {
+				position: absolute;
+				left: 0px;
+				top: 450px;
+				height: 120px;
+				width: 210px;
+				background: rgba(125, 125, 120, 0.6);
+				text-indent: 2em;
+				padding-right: 500px;
+				font-family: "SimSun";
+				font-size: 20px;
+				line-height: 40px;
+				text-overflow: ellipsis;
+				white-space: nowrap;
+				font-weight: normal;
+				color: ghostwhite
+			}
+
+			.box-2 {
+				position: absolute;
+				right: 140px;
+				bottom: 550px;
+			}
+
+			.box-2 ul li {
+				float: left;
+				width: 60px;
+				height: 5px;
+				overflow: hidden;
+				margin: 15px;
+				background: rgba(0, 0, 0, 0.5);
+				text-indent: 100px;
+				cursor: pointer;
+			}
+
+			.box-2 ul .on {
+				background: rgba(255, 255, 255, 0.6);
+			}
+
+			.box-3 span {
+				position: absolute;
+				color: white;
+				background: rgba(125, 125, 120, 0.3);
+				width: 50px;
+				height: 80px;
+				top: 50%;
+				font-family: "宋体";
+				line-height: 80px;
+				font-size: 36px;
+				margin-top: -40px;
+				text-align: center;
+				cursor: pointer;
+			}
+
+			.box-3 .prev {
+				left: 50px;
+				top: 270px;
+			}
+
+			.box-3 .next {
+				right: 10px;
+				top: 270px;
+			}
+
+			.box-3 span::selection {
+				background: transparent;
+			}
+
+			.box-3 span:hover {
+				background: rgba(125, 125, 120, 1);
+			}
+
+			/*下拉菜单CSS设置*/
+			.btn-list-group {
+				position: relative;
+				width: 15%;
+				margin-top: 10px;
+				margin-left: 10px;
+				text-align: right;
+				cursor: pointer;
+			}
+
+			.btn-list-area {
+				display: none;
+				position:absolute;
+				left:-23px;
+				background:rgb(160,160,160,0.8) ;
+				border-radius: 5px;
+				width: 150px;
+				right: 300px;
+			}
+
+			.btn-list-group:hover .btn-list-area {
+				display: block
+			}
+
+			.menuBtn {
+				display: inline-block;
+				padding-right: 23px;
+				font-size: 25px;
+				color: rgba(255, 255, 255);
+				text-align: center;
+				line-height: 1.5;
+				cursor: pointer;
+			}
+
+			.subMenu {
+				width: 100px;
+			}
+
+			.background-img {
+				margin: 0px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				width: 1456px;
+				height: 880px;
+				background-image: url("img/背景图/13.jpg");
+				background-size: 100%;
+				background-repeat: no-repeat;
+				opacity: 100%;
+			}
+
+			.header {
+				background-color: rgb(212, 212, 212,0.6);
+				height: 100px;
+				width: 1456px;
+				margin-left: 0px;
+			}
+			.title-img{
+			    padding-left:20px;
+				padding-top:8px;
+				background-repeat: no-repeat;
+			}
+
+			.title-text1 {
+				margin-top: -711px;
+				margin-left: 1020px;
+				font-size: 24px;
+				color: rgb(255, 255, 255);
+				font-family: "Microsoft YaHei", "微软雅黑", "宋体";
+				/*text-shadow: 2px 2px 2px grey;*/
+			}
+
+			.bangdang {
+				position: relative;
+				width: 600px;
+				height: 310px;
+				margin-top: -583px;
+				margin-left: 800px;
+				background-color: rgb(212, 212, 212,0.4);
+			}
+
+			
+
+			.sunyingsha {
+				position: relative;
+				width: 130px;
+				height: 130px;
+				top: 19px;
+				left: 50px;
+			}
+
+			.wangchuqin {
+				position: relative;
+				width: 130px;
+				height: 130px;
+				top: -115px;
+				left: 230px;
+			}
+
+			.fanzhendong {
+				position: relative;
+				width: 130px;
+				height: 130px;
+				top: -249px;
+				left: 410px;
+			}
+
+			.linxiaojun {
+				position: relative;
+				width: 130px;
+				height: 130px;
+				top: -239px;
+				left: 50px;
+			}
+
+			.yushengjiexian {
+				position: relative;
+				width: 130px;
+				height: 130px;
+				top: -370px;
+				left: 230px;
+			}
+
+			.gengduo {
+				position: relative;
+				width: 130px;
+				height: 130px;
+				top: -501px;
+				left: 410px;
+			}
+
+			.zixun {
+				position: relative;
+				width: 600px;
+				height: 233px;
+				margin-top: 40px;
+				margin-left: 800px;
+				background-color: rgb(212, 212, 212,0.4);
+			}
+
+			.zixun-title {
+				position: relative;
+				width: 300px;
+				top: 15px;
+				left: 235px;
+				font-size: 30px;
+				color: rgb(255, 255, 255, 1);
+				font-family: "SimSun";
+			}
+
+			.zixun-fenge1 {
+				position: relative;
+				width: 2px;
+				height: 100px;
+				top: 70px;
+				margin-left: 198px;
+				background-color: aliceblue;
+			}
+
+			.zixun-fenge2 {
+				position: relative;
+				width: 2px;
+				height: 100px;
+				margin-top: -30px;
+				margin-left: 398px;
+				background-color: aliceblue;
+			}
+
+			.zixun-text1 {
+				position: relative;
+				width: 300px;
+				top: -95px;
+				left: 70px;
+				font-size: 40px;
+				color: rgb(255, 255, 255, 1);
+				font-family: "SimSun";
+			}
+
+			.zixun-text1:hover {
+				color: rgb(255, 255, 255, 0.5);
+			}
+
+			.zixun-text2 {
+				position: relative;
+				width: 300px;
+				top: -187px;
+				left: 260px;
+				font-size: 40px;
+				color: rgb(255, 255, 255, 1);
+				font-family: "SimSun";
+			}
+
+			.zixun-text2:hover {
+				color: rgb(255, 255, 255, 0.7);
+			}
+
+			.zixun-text3 {
+				position: relative;
+				width: 200px;
+				top: -279px;
+				left: 450px;
+				font-size: 40px;
+				color: rgb(255, 255, 255, 1);
+				font-family: "SimSun";
+			}
+
+			.zixun-text3:hover {
+				color: rgb(255, 255, 255, 0.7);
+			}
+			.yezi1{
+				position: relative;
+			    margin-top: 320px;
+				margin-left:720px;
+				rotate:-10deg;
+				opacity: 0.9;
+			}
+			.bangdang-text1 {
+				position: relative;
+			    margin-top: -50px;
+				margin-left: 30px;
+				width: 300px;
+				font-size: 23px;
+				color: rgb(255, 255, 255, 1);
+				font-family: "SimSun";
+				text-shadow: 0 0 5px black;
+			}
+			.yezi2{
+				position: relative;
+			    margin-top: 20px;
+				margin-left:1250px;
+				rotate:5deg;
+			}
+			.bangdang-text2 {
+				position: relative;
+			    margin-top: -50px;
+				margin-left: 70px;
+				width: 300px;
+				font-size: 23px;
+				color: rgb(255, 255, 255, 1);
+				font-family: "SimSun";
+				text-shadow: 0 0 5px black;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="background-img">
+			<div class="header">
+				<div class="title-img"><img src="img/出口.png" width="60px" height="80px" />
+					
+				</div>
+			</div>
+
+			<div class="box">
+				<div class="box-1">
+					<ul>
+						<li>
+							<img src="img/慢跑.jpg"></img>
+							<h2>慢跑是最常见也是很容易进行的一项运动。对于处于压力当中的人来说，剧<br>
+								烈的快跑更倾向于发泄，不如慢跑的效果好。在运动之前，可以适当做些热身运<br>动，调整呼吸。</h2>
+						</li>
+						<li>
+							<img src="img/游泳.jpg"></img>
+							<h2>游泳能让全身得到锻炼，呼吸换气时可提高心肺功能，改善心脏供血问题；<br>
+								全身的肌肉在放松的同时可以替代脑力活动，心理的压力就会得到缓解。换气时<br>可提高心肺功能，改善心脏供血问题。</h2>
+						</li>
+						<li>
+							<img src="img/瑜伽.jpg"></img>
+							<h2>瑜伽是一种既能锻炼身体，又能缓解压力的运动。通过各种体式的练习，可<br>
+								以帮助人们放松身体，瑜伽还可以提高人们的专注力和自我控制力，缓解焦<br>虑和压力。帮助人们更好地应对压力和挑战。</h2>
+						</li>
+						<li>
+							<img src="img/太极拳.jpg"></img>
+							<h2>太极拳以柔和的动作和呼吸控制为要点。通过练太极拳可以帮助放松身体、<br>
+								舒缓压力。可以增强呼吸机能 对提高肺部的通气和换气功能有良好作用。太极<br>拳还可以提高人的身心协调能力和自我控制力。</h2>
+						</li>
+						<li>
+							<img src="img/动感单车.jpg"></img>
+							<h2>动感单车是一种结合了音乐、视觉效果等独特的充满活力的室内自行车锻炼<br>
+								课程。研究表明，动感单车可激发人体众多的快乐因子，包括分泌内啡肽、多巴<br>
+								胺等。</h2>
+						</li>
+					</ul>
+				</div>
+				<div class="box-2">
+					<ul>
+						
+					</ul>
+				</div>
+				<div class="box-3">
+					<span class="prev"><</span>
+					<span class="next">></span>
+				</div>
+			</div>
+			
+			<div class="bangdang">
+				
+				<div class="sunyingsha"><a
+						href="https://weibo.com/p/100808a9fc59651c0baff67337f98b9717ad55/super_index"><img
+							src="img/榜单/孙颖莎0.png" width="130px"></a></div>
+				<div class="wangchuqin"><a
+						href="https://weibo.com/p/100808b10dadcd006e6e0226632b9191f2bb49/super_index"><img
+							src="img/榜单/王楚钦0.png" width="130px"></a></div>
+				<div class="fanzhendong"><a
+						href="https://weibo.com/p/1008080391332928de4da0860b025d281356e1/super_index"><img
+							src="img/榜单/樊振东0.png" width="130px"></a></div>
+				<div class="linxiaojun"><a
+						href="https://weibo.com/p/100808e378be8a31cda31e41cb5bb8907b75ed/super_index"><img
+							src="img/榜单/林孝埈0.png" width="130px"></a></div>
+				<div class="yushengjiexian"><a
+						href="https://weibo.com/p/10080885eb7f6b5025d657a6cfba56ca98d74e/super_index"><img
+							src="img/榜单/羽生结弦0.png" width="130px"></a></div>
+				<div class="gengduo"><a
+						href="https://weibo.com/p/100808b0dc2f50672971ce20ffc144c520476f/super_index"><img
+							src="img/榜单/了解更多.png" width="130px"></a></div>
+			</div>
+			<div class="zixun">
+				<div class="zixun-fenge1"></div>
+				<div class="zixun-fenge2"></div>
+				<div class="zixun-text1"><a style="color:inherit;" href="https://tv.cctv.com/live/cctv5/">体育<br>直播</a>
+				</div>
+				<div class="zixun-text2"><a style="color:inherit;"
+						href="https://sports.cctv.com/?spm=C28340.P9mj1V5B06xk.E2XVQsMhlk44.7">体育<br>资讯</a></div>
+				<div class="zixun-text3"><a style="color:inherit;"
+						href="https://sports.cctv.com/wlty/index.shtml?spm=C73465.PhvcG4VlqNFF.EyAwthc54FQC.12">文旅<br>体育</a>
+				</div>
+			</div>
+			
+			<div class="title-text1"> <a style="color:inherit;" href="jiemian1.html">首页&nbsp&nbsp&nbsp</a>
+				<span class="btn-list-group">
+					<a style="color:inherit;" href="jiemian2.html">心灵驿站</a>
+					<span class="btn-list-area">
+						<a class="menuBtn subMenu" href="sport.html">运动</a>
+						<a class="menuBtn subMenu" href="music.html">音乐</a>
+						<a class="menuBtn subMenu" href="read.html">读书</a>
+						<a class="menuBtn subMenu" href="travel.html">旅行</a>
+					</span>
+				</span>
+				&nbsp&nbsp&nbsp
+				<a style="color:inherit;" href="shudong.html">星空树洞</a>&nbsp&nbsp&nbsp
+				<a style="color:inherit;" href="ending.html">结语</a>
+			</div>
+			<div class="yezi1"><img src="img/树叶1.png" width="33%" height="80px"/>
+			    <div class="bangdang-text1">体育社区超话</div>
+			</div>
+			<div class="yezi2"><img src="img/树叶4.png" width="100%" height="80px"/>
+			    <div class="bangdang-text2">体育相关</div>
+			</div>
+		</div>
+		
+	</body>
+	<script src="js/lunbo.js"></script>
+</html>

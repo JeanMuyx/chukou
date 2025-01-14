@@ -1,0 +1,21 @@
+   #musicico {
+	animation-name: music; //这个名称是下方的动画名称
+	animation-timing-function: linear; //linear代表均速旋转
+	animation-duration: 3s; //3秒旋转完一圈
+	animation-iteration-count: infinite; //旋转无数次
+}
+
+/* 实现动画的旋转 */
+@keyframes music {
+	0% {
+		transform: rotate(0deg);
+	}
+
+	50% {
+		transform: rotate(180deg);
+	}
+
+	100% {
+		transform: rotate(365deg);
+	}
+}

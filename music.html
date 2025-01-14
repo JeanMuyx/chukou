@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>音乐</title>
+		<style>
+			a {
+				text-decoration: none;
+				letter-spacing: 2px;
+			}
+
+			p {
+				line-height: 1.5;
+			}
+
+			/*照片墙*/
+			.wall {
+				position: relative;
+				width: 1200px;
+				height: 600px;
+				margin-top: 30px;
+				margin-left: 135px;
+				border: 2px #DDDDDD solid;
+				background-color: rgba(255, 255, 255, 0.3);
+			}
+
+			.pic {
+				position: absolute;
+				top: 20px;
+				left: 50px;
+				width: 250px;
+				height: 250px;
+				transition: transform 2s;
+				background-color: rgba(255, 255, 255, 0);
+			}
+
+			.pic1 {
+				position: absolute;
+				top: 20px;
+				left: 330px;
+				width: 250px;
+				height: 250px;
+				transition: transform 2s;
+				background-color: rgba(255, 255, 255, 0);
+			}
+
+			.pic2 {
+				position: absolute;
+				top: 20px;
+				left: 610px;
+				width: 250px;
+				height: 250px;
+				transition: transform 2s;
+				background-color: rgba(255, 255, 255, 0);
+			}
+
+			.pic3 {
+				position: absolute;
+				top: 20px;
+				left: 890px;
+				width: 250px;
+				height: 250px;
+				transition: transform 2s;
+				background-color: rgba(255, 255, 255, 0);
+			}
+
+			.pic4 {
+				position: absolute;
+				top: 300px;
+				left: 50px;
+				width: 250px;
+				height: 250px;
+				transition: transform 2s;
+				background-color: rgba(255, 255, 255, 0);
+			}
+
+			.pic5 {
+				position: absolute;
+				top: 300px;
+				left: 330px;
+				width: 250px;
+				height: 250px;
+				transition: transform 2s;
+				background-color: rgba(255, 255, 255, 0);
+			}
+
+			.pic6 {
+				position: absolute;
+				top: 300px;
+				left: 610px;
+				width: 250px;
+				height: 250px;
+				transition: transform 2s;
+				background-color: rgba(255, 255, 255, 0);
+			}
+
+			.pic7 {
+				position: absolute;
+				top: 300px;
+				left: 890px;
+				width: 250px;
+				height: 250px;
+				transition: transform 2s;
+				background-color: rgba(255, 255, 255, 0);
+			}
+
+			/*下拉菜单CSS设置*/
+			.btn-list-group {
+				position: relative;
+				width: 15%;
+				margin-top: 10px;
+				margin-left: 10px;
+				text-align: right;
+				cursor: pointer;
+			}
+
+			.btn-list-area {
+				display: none;
+				position: absolute;
+				left: -23px;
+				background: rgb(155, 170, 211, 0.6);
+				border-radius: 5px;
+				width: 150px;
+				right: 300px;
+			}
+
+			.btn-list-group:hover .btn-list-area {
+				display: block
+			}
+
+			.menuBtn {
+				display: inline-block;
+				padding-right: 23px;
+				font-size: 25px;
+				color: rgba(255, 255, 255);
+				text-align: center;
+				line-height: 1.5;
+				cursor: pointer;
+			}
+
+			.subMenu {
+				width: 100px;
+			}
+
+			/*背景CSS设置*/
+			.background-img {
+				margin: 0px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				width: 1456px;
+				height: 880px;
+				background-image: url("img/背景图/12.jpg");
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+
+			.header {
+				background-color: rgb(155, 170, 211, 0.6);
+				height: 100px;
+				width: 1456px;
+				margin-left: 0px;
+			}
+
+			.title-img1 {
+				padding-left: 20px;
+				padding-top: 8px;
+				background-repeat: no-repeat;
+			}
+
+			.title-text1 {
+				margin-top: -813px;
+				margin-left: 1020px;
+				font-size: 24px;
+				color: rgb(255, 255, 255);
+				font-family: "Microsoft YaHei", "微软雅黑", "宋体";
+				/*text-shadow: 2px 2px 2px grey;*/
+			}
+
+			/*.yinfu{
+				width: 50%;
+				height: 50%;
+				background-image:url("img/音符/1.png");
+				background-repeat: no-repeat;
+			}*/
+			.img-pause1 {
+				position: absolute;
+				width: 8%;
+				height: 16%;
+				margin-top: 90px;
+				margin-left: 120px;
+				opacity: 100%;
+			}
+
+			@font-face {
+				font-family: qianzhihe;
+				src: url(Font/千纸鹤.TTF);
+			}
+
+			.text-jieshao {
+				color: black;
+				margin-top: 40px;
+				margin-left: 400px;
+				font-family: qianzhihe;
+				font-size: 30px;
+				text-shadow: 0 0 2px white;
+			}
+
+			.yinfu1 {
+				position: relative;
+				margin-top: -600px;
+				margin-left: 100px;
+				opacity: 0.8;
+			}
+
+			.yinfu2 {
+				position: relative;
+				margin-top: 160px;
+				margin-left: 1240px;
+				opacity: 0.7;
+			}
+
+			.yinfu3 {
+				width: 80px;
+				height: 160px;
+				position: relative;
+				margin-top: 110px;
+				margin-left: 100px;
+				opacity: 0.7;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="background-img">
+			<div class="header">
+				<div class="title-img1"><img src="img/出口.png" width="60px" height="80px" />
+				</div>
+			</div>
+			<div class="text-jieshao">点击触动心灵的音乐，让不快乐在音乐的海洋里释放~</div>
+			<div class="wall">
+
+				<div>
+					<audio id="music" src="music/那个夏天 - 纯音乐网.mp3"></audio>
+					<img id="musicImg" class="pic" src="img/封面/summer1.jpg" onClick="play()">
+				</div>
+				<div>
+					<audio id="music1" src="music/雨的印记 - 纯音乐网.mp3"></audio>
+					<img id="musicImg1" class="pic1" src="img/封面/雨的印记1.jpg" onClick="play1()">
+				</div>
+				<div>
+					<audio id="music2" src="music/优美的小调 - 纯音乐网.mp3"></audio>
+					<img id="musicImg2" class="pic2" src="img/封面/优美的小调1.jpg" onClick="play2()">
+				</div>
+				<div>
+					<audio id="music3" src="music/夜空的寂静 - 纯音乐网.mp3"></audio>
+					<img id="musicImg3" class="pic3" src="img/封面/夜空的寂静1.jpg" onClick="play3()">
+				</div>
+				<div>
+					<audio id="music4" src="music/故乡的原风景 - 纯音乐网.mp3"></audio>
+					<img id="musicImg4" class="pic4" src="img/封面/故乡的原风景1.jpg" onClick="play4()">
+				</div>
+				<div>
+					<audio id="music5" src="music/风中的蒲公英 - 纯音乐网.mp3"></audio>
+					<img id="musicImg5" class="pic5" src="img/封面/蒲公英1.jpg" onClick="play5()">
+				</div>
+				<div>
+					<audio id="music6" src="music/梶浦由記 - guess how much I love you.mp3"></audio>
+					<img id="musicImg6" class="pic6" src="img/封面/guess1.jpg" onClick="play6()">
+				</div>
+				<div>
+					<audio id="music7" src="music/水边的阿狄丽娜.mp3"></audio>
+					<img id="musicImg7" class="pic7" src="img/封面//水边的阿狄丽娜1.jpg" onClick="play7()">
+				</div>
+
+				<div><a href="https://music.163.com/"><img src="img/more.png" width="150px" height="40px"
+							style="position: absolute; margin-top:555px;margin-left:1030px"></a></div>
+			</div>
+			<div class="yinfu1"><img src="img/音符1.png" width="100px" height="80px" /></div>
+			<div class="yinfu2"><img src="img/音符2.png" width="140px" height="120px" /></div>
+			<div class="yinfu3"><img src="img/音符3.png" width="80px" height="160px" /></div>
+
+			<div class="title-text1"> <a style="color:inherit;" href="jiemian1.html">首页&nbsp&nbsp&nbsp</a>
+				<span class="btn-list-group">
+					<a style="color:inherit;" href="jiemian2.html">心灵驿站</a>
+					<span class="btn-list-area">
+						<a class="menuBtn subMenu" href="sport.html">运动</a>
+						<a class="menuBtn subMenu" href="music.html">音乐</a>
+						<a class="menuBtn subMenu" href="read.html">读书</a>
+						<a class="menuBtn subMenu" href="travel.html">旅行</a>
+					</span>
+				</span>
+				&nbsp&nbsp&nbsp
+				<a style="color:inherit;" href="shudong.html">星空树洞</a>&nbsp&nbsp&nbsp
+				<a style="color:inherit;" href="ending.html">结语</a>
+			</div>
+		</div>
+
+	</body>
+	<script>
+		function play() {
+			var audio = document.getElementById('music');
+			var audio1 = document.getElementById('music1');
+			var audio2 = document.getElementById('music2');
+			var audio3 = document.getElementById('music3');
+			var audio4 = document.getElementById('music4');
+			var audio5 = document.getElementById('music5');
+			var audio6 = document.getElementById('music6');
+			var audio7 = document.getElementById('music7');
+
+			// 停止第二个音频
+			if (!audio1.paused) {
+				audio1.pause();
+				audio1.currentTime = 0;
+				document.getElementById('musicImg1').src = "img/封面/雨的印记1.jpg";
+			}
+			if (!audio2.paused) {
+				audio2.pause();
+				audio2.currentTime = 0;
+				document.getElementById('musicImg2').src = "img/封面/优美的小调1.jpg";
+			}
+			if (!audio3.paused) {
+				audio3.pause();
+				audio3.currentTime = 0;
+				document.getElementById('musicImg3').src = "img/封面/夜空的寂静1.jpg";
+			}
+			if (!audio4.paused) {
+				audio4.pause();
+				audio4.currentTime = 0;
+				document.getElementById('musicImg4').src = "img/封面/故乡的原风景1.jpg";
+			}
+			if (!audio5.paused) {
+				audio5.pause();
+				audio5.currentTime = 0;
+				document.getElementById('musicImg5').src = "img/封面/蒲公英1.jpg";
+			}
+			if (!audio6.paused) {
+				audio6.pause();
+				audio6.currentTime = 0;
+				document.getElementById('musicImg6').src = "img/封面/guess1.jpg";
+			}
+			if (!audio7.paused) {
+				audio7.pause();
+				audio7.currentTime = 0;
+				document.getElementById('musicImg7').src = "img/封面/水边的阿狄丽娜1.jpg";
+			}
+
+			if (audio.paused) {
+				audio.play();
+				document.getElementById('musicImg').src = "img/封面/summer.png";
+			} else {
+				audio.pause();
+				audio.currentTime = 0;
+				document.getElementById('musicImg').src = "img/封面/summer1.jpg";
+			}
+		}
+
+		function play1() {
+			var audio = document.getElementById('music');
+			var audio1 = document.getElementById('music1');
+			var audio2 = document.getElementById('music2');
+			var audio3 = document.getElementById('music3');
+			var audio4 = document.getElementById('music4');
+			var audio5 = document.getElementById('music5');
+			var audio6 = document.getElementById('music6');
+			var audio7 = document.getElementById('music7');
+
+			// 停止第一个音频
+			if (!audio.paused) {
+				audio.pause();
+				audio.currentTime = 0;
+				document.getElementById('musicImg').src = "img/封面/summer1.jpg";
+			}
+			if (!audio2.paused) {
+				audio2.pause();
+				audio2.currentTime = 0;
+				document.getElementById('musicImg2').src = "img/封面/优美的小调1.jpg";
+			}
+
+			if (!audio3.paused) {
+				audio3.pause();
+				audio3.currentTime = 0;
+				document.getElementById('musicImg3').src = "img/封面/夜空的寂静1.jpg";
+			}
+			if (!audio4.paused) {
+				audio4.pause();
+				audio4.currentTime = 0;
+				document.getElementById('musicImg4').src = "img/封面/故乡的原风景1.jpg";
+			}
+			if (!audio5.paused) {
+				audio5.pause();
+				audio5.currentTime = 0;
+				document.getElementById('musicImg5').src = "img/封面/蒲公英1.jpg";
+			}
+			if (!audio6.paused) {
+				audio6.pause();
+				audio6.currentTime = 0;
+				document.getElementById('musicImg6').src = "img/封面/guess1.jpg";
+			}
+			if (!audio7.paused) {
+				audio7.pause();
+				audio7.currentTime = 0;
+				document.getElementById('musicImg7').src = "img/封面/水边的阿狄丽娜1.jpg";
+			}
+
+			if (audio1.paused) {
+				audio1.play();
+				document.getElementById('musicImg1').src = "img/封面/雨的印记.png";
+			} else {
+				audio1.pause();
+				audio1.currentTime = 0;
+				document.getElementById('musicImg1').src = "img/封面/雨的印记1.jpg";
+			}
+		}
+
+		function play2() {
+			var audio = document.getElementById('music');
+			var audio1 = document.getElementById('music1');
+			var audio2 = document.getElementById('music2');
+			var audio3 = document.getElementById('music3');
+			var audio4 = document.getElementById('music4');
+			var audio5 = document.getElementById('music5');
+			var audio6 = document.getElementById('music6');
+			var audio7 = document.getElementById('music7');
+			if (!audio.paused) {
+				audio.pause();
+				audio.currentTime = 0;
+				document.getElementById('musicImg').src = "img/封面/summer1.jpg";
+			}
+
+			if (!audio1.paused) {
+				audio1.pause();
+				audio1.currentTime = 0;
+				document.getElementById('musicImg1').src = "img/封面/雨的印记1.jpg";
+			}
+			if (!audio3.paused) {
+				audio3.pause();
+				audio3.currentTime = 0;
+				document.getElementById('musicImg3').src = "img/封面/夜空的寂静1.jpg";
+			}
+			if (!audio4.paused) {
+				audio4.pause();
+				audio4.currentTime = 0;
+				document.getElementById('musicImg4').src = "img/封面/故乡的原风景1.jpg";
+			}
+			if (!audio5.paused) {
+				audio5.pause();
+				audio5.currentTime = 0;
+				document.getElementById('musicImg5').src = "img/封面/蒲公英1.jpg";
+			}
+			if (!audio6.paused) {
+				audio6.pause();
+				audio6.currentTime = 0;
+				document.getElementById('musicImg6').src = "img/封面/guess1.jpg";
+			}
+			if (!audio7.paused) {
+				audio7.pause();
+				audio7.currentTime = 0;
+				document.getElementById('musicImg7').src = "img/封面/水边的阿狄丽娜1.jpg";
+			}
+
+			if (audio2.paused) {
+				audio2.play();
+				document.getElementById('musicImg2').src = "img/封面/优美的小调.png";
+			} else {
+				audio2.pause();
+				audio2.currentTime = 0;
+				document.getElementById('musicImg2').src = "img/封面/优美的小调1.jpg";
+			}
+		}
+
+		function play3() {
+			var audio = document.getElementById('music');
+			var audio1 = document.getElementById('music1');
+			var audio2 = document.getElementById('music2');
+			var audio3 = document.getElementById('music3');
+			var audio4 = document.getElementById('music4');
+			var audio5 = document.getElementById('music5');
+			var audio6 = document.getElementById('music6');
+			var audio7 = document.getElementById('music7');
+			if (!audio.paused) {
+				audio.pause();
+				audio.currentTime = 0;
+				document.getElementById('musicImg').src = "img/封面/summer1.jpg";
+			}
+			if (!audio1.paused) {
+				audio1.pause();
+				audio1.currentTime = 0;
+				document.getElementById('musicImg1').src = "img/封面/雨的印记1.jpg";
+			}
+			if (!audio2.paused) {
+				audio2.pause();
+				audio2.currentTime = 0;
+				document.getElementById('musicImg2').src = "img/封面/优美的小调1.jpg";
+			}
+			if (!audio4.paused) {
+				audio4.pause();
+				audio4.currentTime = 0;
+				document.getElementById('musicImg4').src = "img/封面/故乡的原风景1.jpg";
+			}
+			if (!audio5.paused) {
+				audio5.pause();
+				audio5.currentTime = 0;
+				document.getElementById('musicImg5').src = "img/封面/蒲公英1.jpg";
+			}
+			if (!audio6.paused) {
+				audio6.pause();
+				audio6.currentTime = 0;
+				document.getElementById('musicImg6').src = "img/封面/guess1.jpg";
+			}
+			if (!audio7.paused) {
+				audio7.pause();
+				audio7.currentTime = 0;
+				document.getElementById('musicImg7').src = "img/封面/水边的阿狄丽娜1.jpg";
+			}
+
+
+
+			if (audio3.paused) {
+				audio3.play();
+				document.getElementById('musicImg3').src = "img/封面/夜空的寂静.png";
+			} else {
+				audio3.pause();
+				audio3.currentTime = 0;
+				document.getElementById('musicImg3').src = "img/封面/夜空的寂静1.jpg";
+			}
+		}
+
+		function play4() {
+			var audio = document.getElementById('music');
+			var audio1 = document.getElementById('music1');
+			var audio2 = document.getElementById('music2');
+			var audio3 = document.getElementById('music3');
+			var audio4 = document.getElementById('music4');
+			var audio5 = document.getElementById('music5');
+			var audio6 = document.getElementById('music6');
+			var audio7 = document.getElementById('music7');
+			if (!audio.paused) {
+				audio.pause();
+				audio.currentTime = 0;
+				document.getElementById('musicImg').src = "img/封面/summer1.jpg";
+			}
+			if (!audio1.paused) {
+				audio1.pause();
+				audio1.currentTime = 0;
+				document.getElementById('musicImg1').src = "img/封面/雨的印记1.jpg";
+			}
+			if (!audio2.paused) {
+				audio2.pause();
+				audio2.currentTime = 0;
+				document.getElementById('musicImg2').src = "img/封面/优美的小调1.jpg";
+			}
+			if (!audio3.paused) {
+				audio3.pause();
+				audio3.currentTime = 0;
+				document.getElementById('musicImg3').src = "img/封面/夜空的寂静1.jpg";
+			}
+			if (!audio5.paused) {
+				audio5.pause();
+				audio5.currentTime = 0;
+				document.getElementById('musicImg5').src = "img/封面/蒲公英1.jpg";
+			}
+			if (!audio6.paused) {
+				audio6.pause();
+				audio6.currentTime = 0;
+				document.getElementById('musicImg6').src = "img/封面/guess1.jpg";
+			}
+			if (!audio7.paused) {
+				audio7.pause();
+				audio7.currentTime = 0;
+				document.getElementById('musicImg7').src = "img/封面/水边的阿狄丽娜1.jpg";
+			}
+
+			if (audio4.paused) {
+				audio4.play();
+				document.getElementById('musicImg4').src = "img/封面/故乡的原风景.png";
+			} else {
+				audio4.pause();
+				audio4.currentTime = 0;
+				document.getElementById('musicImg4').src = "img/封面/故乡的原风景1.jpg";
+			}
+		}
+
+		function play5() {
+			var audio = document.getElementById('music');
+			var audio1 = document.getElementById('music1');
+			var audio2 = document.getElementById('music2');
+			var audio3 = document.getElementById('music3');
+			var audio4 = document.getElementById('music4');
+			var audio5 = document.getElementById('music5');
+			var audio6 = document.getElementById('music6');
+			var audio7 = document.getElementById('music7');
+			if (!audio.paused) {
+				audio.pause();
+				audio.currentTime = 0;
+				document.getElementById('musicImg').src = "img/封面/summer1.jpg";
+			}
+			if (!audio1.paused) {
+				audio1.pause();
+				audio1.currentTime = 0;
+				document.getElementById('musicImg1').src = "img/封面/雨的印记1.jpg";
+			}
+			if (!audio2.paused) {
+				audio2.pause();
+				audio2.currentTime = 0;
+				document.getElementById('musicImg2').src = "img/封面/优美的小调1.jpg";
+			}
+			if (!audio3.paused) {
+				audio3.pause();
+				audio3.currentTime = 0;
+				document.getElementById('musicImg3').src = "img/封面/夜空的寂静1.jpg";
+			}
+			if (!audio4.paused) {
+				audio4.pause();
+				audio4.currentTime = 0;
+				document.getElementById('musicImg4').src = "img/封面/故乡的原风景1.jpg";
+			}
+			if (!audio6.paused) {
+				audio6.pause();
+				audio6.currentTime = 0;
+				document.getElementById('musicImg6').src = "img/封面/guess1.jpg";
+			}
+			if (!audio7.paused) {
+				audio7.pause();
+				audio7.currentTime = 0;
+				document.getElementById('musicImg7').src = "img/封面/水边的阿狄丽娜1.jpg";
+			}
+
+			if (audio5.paused) {
+				audio5.play();
+				document.getElementById('musicImg5').src = "img/封面/蒲公英.jpg";
+			} else {
+				audio5.pause();
+				audio5.currentTime = 0;
+				document.getElementById('musicImg5').src = "img/封面/蒲公英1.jpg";
+			}
+		}
+
+		function play6() {
+			var audio = document.getElementById('music');
+			var audio1 = document.getElementById('music1');
+			var audio2 = document.getElementById('music2');
+			var audio3 = document.getElementById('music3');
+			var audio4 = document.getElementById('music4');
+			var audio5 = document.getElementById('music5');
+			var audio6 = document.getElementById('music6');
+			var audio7 = document.getElementById('music7');
+			if (!audio.paused) {
+				audio.pause();
+				audio.currentTime = 0;
+				document.getElementById('musicImg').src = "img/封面/summer1.jpg";
+			}
+			if (!audio1.paused) {
+				audio1.pause();
+				audio1.currentTime = 0;
+				document.getElementById('musicImg1').src = "img/封面/雨的印记1.jpg";
+			}
+			if (!audio2.paused) {
+				audio2.pause();
+				audio2.currentTime = 0;
+				document.getElementById('musicImg2').src = "img/封面/优美的小调1.jpg";
+			}
+			if (!audio3.paused) {
+				audio3.pause();
+				audio3.currentTime = 0;
+				document.getElementById('musicImg3').src = "img/封面/夜空的寂静1.jpg";
+			}
+			if (!audio4.paused) {
+				audio4.pause();
+				audio4.currentTime = 0;
+				document.getElementById('musicImg4').src = "img/封面/故乡的原风景1.jpg";
+			}
+			if (!audio5.paused) {
+				audio5.pause();
+				audio5.currentTime = 0;
+				document.getElementById('musicImg5').src = "img/封面/蒲公英1.jpg";
+			}
+			if (!audio7.paused) {
+				audio7.pause();
+				audio7.currentTime = 0;
+				document.getElementById('musicImg7').src = "img/封面/水边的阿狄丽娜1.jpg";
+			}
+
+			if (audio6.paused) {
+				audio6.play();
+				document.getElementById('musicImg6').src = "img/封面/guess.PNG";
+			} else {
+				audio6.pause();
+				audio6.currentTime = 0;
+				document.getElementById('musicImg6').src = "img/封面/guess1.jpg";
+			}
+		}
+
+		function play7() {
+			var audio = document.getElementById('music');
+			var audio1 = document.getElementById('music1');
+			var audio2 = document.getElementById('music2');
+			var audio3 = document.getElementById('music3');
+			var audio4 = document.getElementById('music4');
+			var audio5 = document.getElementById('music5');
+			var audio6 = document.getElementById('music6');
+			var audio7 = document.getElementById('music7');
+			if (!audio.paused) {
+				audio.pause();
+				audio.currentTime = 0;
+				document.getElementById('musicImg').src = "img/封面/summer1.jpg";
+			}
+			if (!audio1.paused) {
+				audio1.pause();
+				audio1.currentTime = 0;
+				document.getElementById('musicImg1').src = "img/封面/雨的印记1.jpg";
+			}
+			if (!audio2.paused) {
+				audio2.pause();
+				audio2.currentTime = 0;
+				document.getElementById('musicImg2').src = "img/封面/优美的小调1.jpg";
+			}
+			if (!audio3.paused) {
+				audio3.pause();
+				audio3.currentTime = 0;
+				document.getElementById('musicImg3').src = "img/封面/夜空的寂静1.jpg";
+			}
+			if (!audio4.paused) {
+				audio4.pause();
+				audio4.currentTime = 0;
+				document.getElementById('musicImg4').src = "img/封面/故乡的原风景1.jpg";
+			}
+			if (!audio5.paused) {
+				audio5.pause();
+				audio5.currentTime = 0;
+				document.getElementById('musicImg5').src = "img/封面/蒲公英1.jpg";
+			}
+			if (!audio6.paused) {
+				audio6.pause();
+				audio6.currentTime = 0;
+				document.getElementById('musicImg6').src = "img/封面/guess1.jpg";
+			}
+			
+			if (audio7.paused) {
+				audio7.play();
+				document.getElementById('musicImg7').src = "img/封面/水边的阿狄丽娜.jpg";
+			} else {
+				audio7.pause();
+				audio7.currentTime = 0;
+				document.getElementById('musicImg7').src = "img/封面/水边的阿狄丽娜1.jpg";
+			}
+		}
+	</script>
+</html>

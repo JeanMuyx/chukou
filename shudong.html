@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<style>
+			a {
+				text-decoration: none;
+				letter-spacing: 2px;
+			}
+
+			p {
+				line-height: 1.5;
+			}
+
+
+			.container {
+				position: relative;
+				width: 90%;
+				height: 300px;
+				overflow: hidden;
+				margin-top: -480px;
+				margin-left: 50px;
+			}
+
+			.barrage {
+				font-family: "Microsoft YaHei", "微软雅黑", "宋体";
+				position: absolute;
+				display: flex;
+				align-items: center;
+				white-space: nowrap;
+				animation: moveBarrage linear infinite;
+			}
+
+			@keyframes moveBarrage {
+				from {
+					transform: translateX(1800%);
+				}
+
+				to {
+					transform: translateX(-100%);
+				}
+			}
+
+			#barrageInput {
+				width: 200px;
+				height: 30px;
+				margin-right: 10px;
+				margin-left: 320px;
+			}
+
+			button {
+				padding: 8px;
+			}
+
+
+			/*下拉菜单CSS设置*/
+			.btn-list-group {
+				position: relative;
+				width: 15%;
+				margin-top: 10px;
+				margin-left: 10px;
+				text-align: right;
+				cursor: pointer;
+			}
+
+			.btn-list-area {
+				display: none;
+				position: absolute;
+				left: -23px;
+				background: rgb(160, 160, 160, 0.3);
+				border-radius: 5px;
+				width: 150px;
+				z-index: 9999;
+				right: 300px;
+			}
+
+			.btn-list-group:hover .btn-list-area {
+				display: block
+			}
+
+			.menuBtn {
+				display: inline-block;
+				padding-right: 23px;
+				font-size: 25px;
+				color: rgba(255, 255, 255);
+				text-align: center;
+				line-height: 1.5;
+				cursor: pointer;
+			}
+
+			.subMenu {
+				width: 100px;
+			}
+
+			.background-img {
+				margin: 0px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				width: 1456px;
+				height: 880px;
+				background-image: url("img/p2.jpg");
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+
+			.header {
+				background-color: rgb(212, 212, 212, 0.6);
+				height: 100px;
+				width: 1456px;
+				margin-left: 0px;
+			}
+
+			.title-img1 {
+				padding-left: 20px;
+				padding-top: 8px;
+				background-repeat: no-repeat;
+			}
+
+			.title-text1 {
+				margin-top: -53px;
+				margin-left: 1000px;
+				font-size: 24px;
+				color: rgb(255, 255, 255);
+				font-family: "Microsoft YaHei", "微软雅黑", "宋体";
+				/*text-shadow: 2px 2px 2px grey;*/
+			}
+
+			.zhi {
+				position: relative;
+				height: 600px;
+				width: 900px;
+				top: 50px;
+				left: 300px;
+			}
+
+			.guanbi {
+				position: relative;
+				width: 40px;
+				height: 40px;
+				top: -510px;
+				left: 1120px;
+			}
+
+			canvas {
+				border: 1px solid #ccc;
+				margin-top: -600px;
+				margin-left: 50px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="background-img">
+			<div class="header">
+				<div class="title-img1"><img src="img/出口.png" width="60px" height="80px" />
+					<div class="title-text1"> <a style="color:inherit;" href="jiemian1.html">首页&nbsp&nbsp&nbsp</a>
+						<span class="btn-list-group">
+							<a style="color:inherit;" href="jiemian2.html">心灵驿站</a>
+							<span class="btn-list-area">
+								<a class="menuBtn subMenu" href="sport.html">运动</a>
+								<a class="menuBtn subMenu" href="music.html">音乐</a>
+								<a class="menuBtn subMenu" href="read.html">读书</a>
+								<a class="menuBtn subMenu" href="travel.html">旅行</a>
+							</span>
+						</span>
+						&nbsp&nbsp&nbsp
+						<a style="color:inherit;" href="shudong.html">星空树洞</a>&nbsp&nbsp&nbsp
+						<a style="color:inherit;" href="ending.html">结语</a>
+					</div>
+				</div>
+			</div>
+
+			<div class="zhi">
+				<img src="img/纸.png" width="900px" height="600px" />
+				<div class="container" id="barrageContainer"></div>
+				<canvas id="barrageCanvas" width="800" height="350"></canvas>
+			
+				<input type="text" id="barrageInput" placeholder="输入你的弹幕">
+				<button onclick="sendBarrage()">发送</button>
+			</div>
+			<div class="guanbi"><a href="jiemian2.html">
+					<img src="img/叉.png" width="40px" height="40px" /></a>
+			</div>
+
+
+
+		</div>
+		<script>
+			const canvas = document.getElementById('barrageCanvas');
+			const context = canvas.getContext('2d');
+			let barrages = [{
+					text: '期末周了，好焦虑好焦虑',
+					x: canvas.width,
+					y: 50,
+					fontSize: 20,
+					color: '#9bbe9c',
+					speed: 1
+				},
+				{
+					text: '回家倒计时，好开森~~',
+					x: canvas.width,
+					y: 100,
+					fontSize: 18,
+					color: '#d9a7d7',
+					speed: 1.5
+				},
+				{
+					text: '做自己喜欢的事，好好生活',
+					x: canvas.width,
+					y: 150,
+					fontSize: 22,
+					color: '#7da0d9',
+					speed: 0.5
+				}
+				// 添加更多的预设弹幕...
+			];
+
+			function drawBarrages() {
+				for (let i = 0; i < barrages.length; i++) {
+					const barrage = barrages[i];
+					context.font = `${barrage.fontSize}px Arial`;
+					context.fillStyle = barrage.color;
+					context.fillText(barrage.text, barrage.x, barrage.y);
+				}
+			}
+
+			function updateBarrages() {
+				context.clearRect(0, 0, canvas.width, canvas.height);
+
+				for (let i = 0; i < barrages.length; i++) {
+					const barrage = barrages[i];
+					context.font = `${barrage.fontSize}px Arial`;
+					context.fillStyle = barrage.color;
+					context.fillText(barrage.text, barrage.x, barrage.y);
+
+					barrage.x -= barrage.speed;
+
+					if (barrage.x < -context.measureText(barrage.text).width) {
+						barrage.x = canvas.width;
+					}
+				}
+
+				requestAnimationFrame(updateBarrages);
+			}
+
+			function sendBarrage() {
+				const input = document.getElementById('barrageInput');
+				const newBarrageText = input.value.trim();
+				if (newBarrageText !== '') {
+					const newBarrage = {
+						text: newBarrageText,
+						x: canvas.width, // 从画布右侧开始滚动
+						y: Math.floor(Math.random() * (canvas.height - 30)) + 30, // 在画布内部随机位置显示
+						fontSize: Math.floor(Math.random() * 20) + 15,
+						color: '#' + Math.floor(Math.random() * 16777215).toString(16),
+						speed: Math.floor(Math.random() * 4) + 1
+					};
+
+					barrages.push(newBarrage);
+					input.value = ''; // 清空输入框
+				}
+			}
+
+			drawBarrages();
+			updateBarrages();
+		</script>
+	</body>
+</html>

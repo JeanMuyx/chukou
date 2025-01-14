@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>弹幕效果</title>
+		<style>
+			a {
+				text-decoration: none;
+				letter-spacing: 2px;
+			}
+
+			p {
+				line-height: 1.5;
+			}
+
+			/*下拉菜单CSS设置*/
+			.btn-list-group {
+				position: relative;
+				width: 15%;
+				margin-top: 10px;
+				margin-left: 10px;
+				text-align: right;
+				cursor: pointer;
+			}
+
+			.btn-list-area {
+				display: none;
+				position: absolute;
+				left: -23px;
+				background: rgb(160, 160, 160, 0.3);
+				border-radius: 5px;
+				width: 150px;
+				right: 300px;
+			}
+
+			.btn-list-group:hover .btn-list-area {
+				display: block
+			}
+
+			.menuBtn {
+				display: inline-block;
+				padding-right: 23px;
+				font-size: 25px;
+				color: rgba(255, 255, 255);
+				text-align: center;
+				line-height: 1.5;
+				cursor: pointer;
+			}
+
+			.subMenu {
+				width: 100px;
+			}
+
+			/*背景CSS设置*/
+			.background-img {
+				margin: 0px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				width: 1456px;
+				height: 880px;
+				background-size: 100%;
+				background-repeat: no-repeat;
+			}
+
+			.header {
+				background-color: rgb(181, 181, 181, 0.8);
+				height: 100px;
+				width: 1456px;
+				margin-left: 0px;
+			}
+
+			.title-img {
+				padding-left: 20px;
+				padding-top: 8px;
+				background-repeat: no-repeat;
+			}
+
+			.title-text1 {
+				margin-top: -840px;
+				margin-left: 1020px;
+				font-size: 24px;
+				color: rgb(255, 255, 255);
+				font-family: "Microsoft YaHei", "微软雅黑", "宋体";
+				/*text-shadow: 2px 2px 2px grey;*/
+			}
+
+			.travel-img {
+				position: relative;
+				margin-top: -300px;
+				margin-left: 600px;
+
+			}
+
+			/*竖向轮播*/
+			#main {
+				width: 1456px;
+				height: 780px;
+				margin-top: 0px;
+				margin-left: 0px;
+			}
+
+			#top {
+				display: inline-block;
+				width: 1456px;
+				height: 780px;
+				font-size: 0;
+				overflow: hidden;
+			}
+
+			#top>img {
+				width: 100%;
+				height: 100%;
+			}
+
+			#bottom {
+				width: 180px;
+				height: 310px;
+				margin-top: -750px;
+				margin-left: 50px;
+				font-size: 0;
+
+			}
+
+			#bottom>a>img {
+				width: 95%;
+				border: 2px solid white;
+				margin-bottom: 18px;
+			}
+
+			#bottom:hover>a>img {}
+
+			#top img {
+				display: none;
+			}
+
+			#top img:first-child {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="background-img">
+			<div class="header">
+				<div class="title-img"><img src="img/出口.png" width="60px" height="80px" />
+
+				</div>
+			</div>
+
+			<div id="main">
+				<div id="top">
+					<img id="img11" src="img/旅游/云南1.jpg" alt="">
+					<img id="img12" src="img/旅游/西湖1.jpg" alt="">
+					<img id="img13" src="img/旅游/黄果树瀑布1.jpg" alt="">
+					<img id="img14" src="img/旅游/苏州园林1.jpg" alt="">
+					<img id="img15" src="img/旅游/长城1.jpg" alt="">
+					<img id="img16" src="img/旅游/布达拉宫1.jpg" alt="">
+				</div>
+				<div id="bottom">
+					<a href="#img11"><img src="img/旅游/云南.jpg" alt="" onclick="changeImage(0)"></a>
+					<a href="#img12"><img src="img/旅游/西湖.jpg" alt="" onclick="changeImage(1)"></a>
+					<a href="#img13"><img src="img/旅游/黄果树瀑布.jpeg" alt="" onclick="changeImage(2)"></a>
+					<a href="#img14"><img src="img/旅游/苏州园林.jpg" alt="" onclick="changeImage(3)"></a>
+					<a href="#img15"><img src="img/旅游/长城.jpg" alt="" onclick="changeImage(4)"></a>
+					<a href="#img16"><img src="img/旅游/布达拉宫.jpg" alt="" onclick="changeImage(5)"></a>
+				</div>
+			</div>
+
+			<div class="title-text1"> <a style="color:inherit;" href="jiemian1.html">首页&nbsp&nbsp&nbsp</a>
+				<span class="btn-list-group">
+					<a style="color:inherit;" href="jiemian2.html">心灵驿站</a>
+					<span class="btn-list-area">
+						<a class="menuBtn subMenu" href="sport.html">运动</a>
+						<a class="menuBtn subMenu" href="music.html">音乐</a>
+						<a class="menuBtn subMenu" href="read.html">读书</a>
+						<a class="menuBtn subMenu" href="travel.html">旅行</a>
+					</span>
+				</span>
+				&nbsp&nbsp&nbsp
+				<a style="color:inherit;" href="shudong.html">星空树洞</a>&nbsp&nbsp&nbsp
+				<a style="color:inherit;" href="ending.html">结语</a>
+
+			</div>
+
+			<script>
+				document.addEventListener('DOMContentLoaded', function() {
+					let currentIndex = 0;
+					let autoPlayInterval;
+
+					function changeImage(index) {
+						const topImages = document.getElementById('top').getElementsByTagName('img');
+
+						// 隐藏当前顶部图片
+						topImages[currentIndex].style.display = 'none';
+
+						// 切换到点击的缩略图对应的顶部图片
+						currentIndex = index;
+
+						// 显示新的顶部图片
+						topImages[currentIndex].style.display = 'block';
+
+						// 重新启动自动播放
+						clearInterval(autoPlayInterval);
+						autoPlayInterval = setInterval(changeImageAutomatically, 3000);
+					}
+
+					function changeImageAutomatically() {
+						const topImages = document.getElementById('top').getElementsByTagName('img');
+
+						// 隐藏当前顶部图片
+						topImages[currentIndex].style.display = 'none';
+
+						// 切换索引
+						currentIndex = (currentIndex + 1) % topImages.length;
+
+						// 显示新的顶部图片
+						topImages[currentIndex].style.display = 'block';
+					}
+
+					// 设置定时器，每隔一段时间调用 changeImageAutomatically 函数
+					autoPlayInterval = setInterval(changeImageAutomatically, 1000);
+
+					// 如果用户将鼠标悬停在顶部图片上，停止自动播放
+					document.getElementById('main').addEventListener('mouseover', function() {
+						clearInterval(autoPlayInterval);
+					});
+
+					// 如果用户将鼠标离开顶部图片，恢复自动播放
+					document.getElementById('main').addEventListener('mouseout', function() {
+						autoPlayInterval = setInterval(changeImageAutomatically, 1000);
+					});
+				});
+			</script>
+	</body>
+</html>

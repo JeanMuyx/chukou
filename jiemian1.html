@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>出口官方页面</title>
+		<style>
+			a {
+				text-decoration: none;
+				letter-spacing: 2px;
+			}
+            p{
+				line-height: 1.5;
+			}
+			/*下拉菜单CSS设置*/
+			.btn-list-group {
+				position: relative;
+				width: 15%;
+				margin-top: 10px;
+				margin-left: 10px;
+				text-align: right;
+				cursor: pointer;
+			}
+
+			.btn-list-area {
+				display: none;
+				position: absolute;
+				left: -23px;
+				background: rgb(169, 197, 227);
+				border-radius: 5px;
+				width: 150px;
+				right: 300px;
+			}
+
+			.btn-list-group:hover .btn-list-area {
+				display: block
+			}
+
+			.menuBtn {
+				position: relative;
+				display: inline-block;
+				padding-right: 23px;
+				font-size: 25px;
+				color: rgba(255, 255, 255);
+				text-align: center;
+				line-height: 1.5;
+				cursor: pointer;
+			}
+
+			.subMenu {
+				position: relative;
+				width: 100px;
+			}
+
+			/*背景CSS设置*/
+			.background-img {
+				margin: 0px;
+				left: 0;
+				right: 0;
+				margin: 0 auto;
+				width: 1456px;
+				height: 880px;
+				background-image: url("img/背景图/1.jpg");
+				background-size: 110%;
+				background-repeat: no-repeat;
+			}
+
+			.title-img {
+				width: 230px;
+				height: 300px;
+				transition: transform 1.5s;
+				padding-left: 600px;
+				padding-top: 220px;
+				background-repeat: no-repeat;
+			}
+
+			.title-img:hover {
+				transform: scale(1.05);
+			}
+
+			.title-img1 {
+				padding-left: 20px;
+				padding-top: 8px;
+				background-repeat: no-repeat;
+			}
+
+			.title-text {
+				margin-top: -160px;
+				margin-left: 720px;
+				font-size: 26px;
+				color: rgb(255, 255, 255, 0.5);
+				font-family: "Microsoft YaHei", "微软雅黑", "宋体";
+			}
+
+			.title-text1 {
+				margin-top: -53px;
+				margin-left: 1000px;
+				font-size: 24px;
+				color: rgb(255, 255, 255, 1);
+				font-family: "Microsoft YaHei", "微软雅黑", "宋体";
+				/*text-shadow: 2px 2px 2px grey;*/
+			}
+
+			.header {
+				background-color: rgb(205, 229, 247,0.6);
+				height: 100px;
+				width: 1456px;
+				margin-left: 0px;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="background-img">
+			<div class="header">
+				<div class="title-img1"><img src="img/出口.png" width="60px" height="80px" />
+					<div class="title-text1"> <a style="color:inherit;" href="jiemian1.html">首页&nbsp&nbsp&nbsp</a>
+						<span class="btn-list-group">
+							<a style="color:inherit;" href="jiemian2.html">心灵驿站</a>
+							<span class="btn-list-area">
+								<a class="menuBtn subMenu" href="sport.html">运动</a>
+								<a class="menuBtn subMenu" href="music.html">音乐</a>
+								<a class="menuBtn subMenu" href="read.html">读书</a>
+								<a class="menuBtn subMenu" href="travel.html">旅行</a>
+							</span>
+						</span>
+						&nbsp&nbsp&nbsp
+						<a style="color:inherit;" href="shudong.html">星空树洞</a>&nbsp&nbsp&nbsp
+						<a style="color:inherit;" href="ending.html">结语</a>
+					</div>
+				</div>
+			</div>
+			<a href="jiemian2.html">
+				<div class="title-img"><img src="img/出口.png" width="230px" height="300px" />
+			</a>
+		</div>
+		<div class="title-text" style="letter-spacing: 4px"><p>出口是心灵释放的表达<br />如初升的太阳，划破夜空的黑暗<br />驱散内心的阴霾……</p></div>
+		</div>
+
+	</body>
+</html>
